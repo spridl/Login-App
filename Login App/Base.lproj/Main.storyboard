@@ -22,8 +22,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Log In"/>
                                 <connections>
-                                    <action selector="loginButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="vMz-z4-Klb"/>
-                                    <segue destination="dae-3s-XPo" kind="presentation" modalPresentationStyle="fullScreen" id="7xk-Mh-geu"/>
+                                    <action selector="loginButtonPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="IUI-hq-YYr"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vZb-1T-Jr0">
@@ -87,6 +86,7 @@
                     <connections>
                         <outlet property="passwordTF" destination="s4F-LR-k1U" id="fwY-3C-dbb"/>
                         <outlet property="userNameTF" destination="hXI-wN-DKm" id="fF5-mi-MF1"/>
+                        <segue destination="dae-3s-XPo" kind="presentation" identifier="segue" modalPresentationStyle="fullScreen" id="3oW-Vd-f45"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
