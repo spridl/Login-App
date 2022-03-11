@@ -12,8 +12,16 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userNameTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     
-    private let userName = "User"
-    private let password = "password"
+    private let user = User.getUser()
+    
+    //НЕ ЗАБУДЬ Удалить!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        userNameTF.text = user.userName
+        passwordTF.text = user.password
+    }
+    // НЕ ЗАБУДЬ УДАЛИТЬ!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -21,8 +29,21 @@ class LoginViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
-        welcomeVC.welcomeLabelText = "Welcome, \(userNameTF.text ?? "")!"
+        guard let tabBar = segue.destination as? UITabBarController else { return }
+        guard let viewControllers = tabBar.viewControllers else { return }
+        
+        for viewController in viewControllers {
+            
+            if let welcomeVC = viewController as? WelcomeViewController {
+                welcomeVC.fullName = user.person.fullName
+            } else if let navigationVC = viewController as? UINavigationController {
+                
+                guard let aboutVC = navigationVC.topViewController as? AboutMeViewController else { return }
+                
+                aboutVC.navigationItem.title = user.person.fullName
+                aboutVC.aboutMeText = user.person.aboutPerson
+            }
+        }
     }
     
     @IBAction func forgotButtonPressed(_ sender: UIButton) {
@@ -43,7 +64,7 @@ class LoginViewController: UIViewController {
     }
     
     private func showWelcomeVC() {
-        if userNameTF.text != userName || passwordTF.text != password {
+        if userNameTF.text != user.userName || passwordTF.text != user.password {
             setAlertController(title: "Ошибка 🙀", message: "Неверные имя или пароль")
             passwordTF.text = ""
         } else {
