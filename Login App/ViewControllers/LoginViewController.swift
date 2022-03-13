@@ -31,8 +31,7 @@ class LoginViewController: UIViewController {
                 guard let aboutVC = navigationVC.topViewController as? AboutMeViewController else { return }
                 
                 aboutVC.navigationItem.title = user.person.fullName
-                aboutVC.aboutMeText = user.person.aboutPerson
-                aboutVC.image = user.person.image
+                aboutVC.person = user.person
             }
         }
     }

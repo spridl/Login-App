@@ -11,16 +11,15 @@ class AboutMeViewController: UIViewController {
     
     @IBOutlet weak var aboutMeLabel: UILabel!
     
-    var aboutMeText: String!
-    var image: String!
+    var person: Person!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        aboutMeLabel.text = aboutMeText
+        aboutMeLabel.text = person.aboutPerson
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let photoVC = segue.destination as? PhotoViewController else { return }
-        photoVC.photoImage = image
+        photoVC.photoImage = person.image
     }
 }
