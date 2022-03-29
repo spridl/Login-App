@@ -29,8 +29,6 @@ class LoginViewController: UIViewController {
                 welcomeVC.fullName = user.person.fullName
             } else if let navigationVC = viewController as? UINavigationController {
                 guard let aboutVC = navigationVC.topViewController as? AboutMeViewController else { return }
-                
-                aboutVC.navigationItem.title = user.person.fullName
                 aboutVC.person = user.person
             }
         }
