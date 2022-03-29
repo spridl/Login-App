@@ -16,6 +16,7 @@ class AboutMeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         aboutMeLabel.text = person.aboutPerson
+        navigationItem.title = person.fullName
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
