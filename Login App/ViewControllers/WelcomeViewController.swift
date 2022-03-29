@@ -16,6 +16,8 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         setGradientLayer()
         welcomeLabel.text = "Welcome, \(fullName ?? "")!"
+        print("testBranch")
+        print("testBranch2")
     }
     
     private func setGradientLayer() {
